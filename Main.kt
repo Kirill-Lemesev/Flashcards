@@ -1,8 +1,9 @@
 package flashcards
 
 fun main() {
-    println("Card:")
-    println("Would you like a beer?")
-    println("Definition:")
-    println("Yes")
+
+    val term = readln().toString()
+    val definition = readln().toString()
+    val answer = readln().toString()
+    if (definition == answer) println("Your answer is right!") else println("Your answer is wrong!")
 }
