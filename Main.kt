@@ -1,6 +1,8 @@
 package flashcards
 
-import flashcards.add as add
+import flashcards.add
+
+var termDefinition = mutableMapOf<String, String> ()
 
 
 fun main() {
@@ -8,12 +10,15 @@ fun main() {
     while (true) {
         println("Input the action (add, remove, import, export, ask, exit):")
         when (readln()) {
-            "add" -> add("/Users/kirilllemesev/IdeaProjects/Flashcards/Flashcards/task/src/flashcards/cards.txt")
-            "remove" -> // TODO
-            "import" -> // TODO
-            "export" -> // TODO
-            "ask" -> // TODO
-            "exit" -> // TODO
+            "add" -> add()
+            //"remove" -> // TODO
+            //"import" -> // TODO
+            //"export" -> // TODO
+            //"ask" -> // TODO
+            "exit" -> {
+                println("Bye bye!")
+                break
+            }
         }
     }
 
