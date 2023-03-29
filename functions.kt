@@ -1,7 +1,7 @@
 package flashcards
 import java.io.File
 
-fun add(){
+fun add() {
 
     println("The card")
     var term = readln()
@@ -21,12 +21,14 @@ fun add(){
 }
 
 
-/*fun remove(){
+fun remove() {
+
     println("Which card?")
     val cardName = readln()
     if (termDefinition.containsKey(cardName)) {
         termDefinition.remove(cardName)
         println("The card has been removed.")
+        println(termDefinition)
     } else {
         println("Can't remove \"$cardName\": there is no such card")
     }
