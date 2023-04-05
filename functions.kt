@@ -52,19 +52,21 @@ fun import() {
                 termDefinition[keyValue[0]] = keyValue[1]
             }
         }
-        if (counter < 2) println("1 card have been loaded") else println("$counter cards have been loaded")
+        println("$counter cards have been loaded")
     } else {
         println("File not found")
     }
 }
 
 
-
-/*
-fun export(){
-
+fun export() {
+    println("File name:")
+    val file = File(readln())
+    file.writeText(termDefinition.toString())
+    println("${termDefinition.size} cards have been saved")
 }
 
+/*
 fun ask(){
 
 }

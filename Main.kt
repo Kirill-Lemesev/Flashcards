@@ -11,8 +11,8 @@ fun main() {
         when (readln()) {
             "add" -> add()
             "remove" -> remove()
-            //"import" -> // TODO
-            //"export" -> // TODO
+            "import" -> import()
+            "export" -> export()
             //"ask" -> // TODO
             "exit" -> {
                 println("Bye bye!")
