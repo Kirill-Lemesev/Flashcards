@@ -1,4 +1,5 @@
 package flashcards
+import com.sun.xml.internal.fastinfoset.util.StringArray
 import java.io.File
 
 fun add() {
@@ -36,12 +37,30 @@ fun remove() {
 }
 
 
-/*
+fun import() {
+    println("File name:")
+    val file = File(readln())
+    var counter = 0
 
-fun import(){
-
+    if (file.exists()) {
+        file.forEachLine {
+            counter += 1
+            val keyValue = it.split(" ")
+            if (keyValue[0] in termDefinition.values) {
+                termDefinition[keyValue[0]] = keyValue[1]
+            } else {
+                termDefinition[keyValue[0]] = keyValue[1]
+            }
+        }
+        if (counter < 2) println("1 card have been loaded") else println("$counter cards have been loaded")
+    } else {
+        println("File not found")
+    }
 }
 
+
+
+/*
 fun export(){
 
 }
