@@ -13,7 +13,7 @@ fun main() {
             "remove" -> remove()
             "import" -> import()
             "export" -> export()
-            //"ask" -> // TODO
+            "ask" -> ask()
             "exit" -> {
                 println("Bye bye!")
                 break

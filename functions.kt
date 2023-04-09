@@ -1,6 +1,7 @@
 package flashcards
-import com.sun.xml.internal.fastinfoset.util.StringArray
+
 import java.io.File
+import kotlin.random.Random
 
 fun add() {
 
@@ -66,8 +67,34 @@ fun export() {
     println("${termDefinition.size} cards have been saved")
 }
 
-/*
-fun ask(){
 
+fun ask() {
+    println("How many times to ask?")
+    val numberOfCards = readln().toInt()
+    repeat(numberOfCards) {
+        val randomKey = termDefinition.keys.random()
+        println("The definition for \"${termDefinition[randomKey]}\"")
+        val answer = readln()
+        when (answer) {
+            termDefinition[randomKey] -> {
+                println("Correct!")
+            }
+
+            in termDefinition.values -> {
+                for (key in termDefinition.keys) {
+                    if (answer == termDefinition[key]) {
+                        println("Wrong. The right answer is \"${termDefinition[randomKey]}\", but your definition is correct for \"${termDefinition[key]}\".")
+                    }
+
+                }
+            }
+
+            else -> {
+                println("Wrong. The right answer is \"${termDefinition[randomKey]}\"")
+            }
+        }
+    }
 }
-*/
+
+
+
