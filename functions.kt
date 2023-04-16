@@ -5,18 +5,18 @@ import java.io.File
 
 fun add() {
 
-    println("The card:")
-    val term = readln()
+    printlnAndLog("The card:")
+    val term = readAndLog()
     if (termDefinition.containsKey(term)) {
-        println("The card \"$term\" already exists.")
+        printlnAndLog("The card \"$term\" already exists.")
     } else {
-        println("The definition of the card:")
-        val definition = readln()
+        printlnAndLog("The definition of the card:")
+        val definition = readAndLog()
         if (termDefinition.containsValue(definition)) {
-            println("The definition \"$definition\" already exists.")
+            printlnAndLog("The definition \"$definition\" already exists.")
         } else {
             termDefinition[term] = definition
-            println("The pair (\"$term\":\"$definition\") has been added.")
+            printlnAndLog("The pair (\"$term\":\"$definition\") has been added.")
         }
 
     }
@@ -26,13 +26,13 @@ fun add() {
 
 fun remove() {
 
-    println("Which card?")
-    val cardName = readln()
+    printlnAndLog("Which card?")
+    val cardName = readAndLog()
     if (termDefinition.containsKey(cardName)) {
         termDefinition.remove(cardName)
-        println("The card has been removed.")
+        printlnAndLog("The card has been removed.")
     } else {
-        println("Can't remove \"$cardName\": there is no such card")
+        printlnAndLog("Can't remove \"$cardName\": there is no such card")
     }
 
 }
@@ -40,8 +40,8 @@ fun remove() {
 
 fun import() {
 
-    println("File name:")
-    val file = File(readln())
+    printlnAndLog("File name:")
+    val file = File(readAndLog())
     if (file.exists()) {
         var counter = 0
         file.forEachLine {
@@ -49,53 +49,67 @@ fun import() {
             termDefinition[keyValue[0]] = keyValue[1]
             counter += 1
         }
-        println("$counter cards have been loaded")
+        printlnAndLog("$counter cards have been loaded")
 
     } else {
-            println("File not found")
+        printlnAndLog("File not found")
         }
 }
 
 
 fun export() {
 
-    println("File name:")
-    val file = File(readln())
+    printlnAndLog("File name:")
+    val file = File(readAndLog())
     var counter = 0
     file.writeText("")
     for ((key, value) in termDefinition) {
         file.appendText("$key:$value\n")
         counter += 1
     }
-    //file.writeText(termDefinition.toString())
-    println("$counter cards have been saved")
+    printlnAndLog("$counter cards have been saved")
 }
 
 
 fun ask() {
 
-    println("How many times to ask?")
-    val numberOfCards = readln().toInt()
+    printlnAndLog("How many times to ask?")
+    val numberOfCards = readAndLog().toInt()
     repeat(numberOfCards) {
         val randomKey = termDefinition.keys.random()
-        println("Print the definition of \"$randomKey\":")
-        when (val answer = readln()) {
+        printlnAndLog("Print the definition of \"$randomKey\":")
+        when (val answer = readAndLog()) {
             termDefinition[randomKey] -> {
-                println("Correct!")
+                printlnAndLog("Correct!")
             }
             in termDefinition.values -> {
                 for (key in termDefinition.keys) {
                     if (answer == termDefinition[key]) {
-                        println("Wrong. The right answer is \"${termDefinition[randomKey]}\", but your definition is correct for \"$key\"")
+                        printlnAndLog("Wrong. The right answer is \"${termDefinition[randomKey]}\", but your definition is correct for \"$key\"")
                     }
                 }
             }
             else -> {
-                println("Wrong. The right answer is \"${termDefinition[randomKey]}\"")
+                printlnAndLog("Wrong. The right answer is \"${termDefinition[randomKey]}\"")
             }
         }
     }
 }
 
+fun log() {
+    printlnAndLog("File name:")
+    val file = File(readAndLog())
+    for (line in log) file.appendText("$line\n")
+    println("The log has been saved.")
+}
 
+fun readAndLog(): String {
+    val input = readln()
+    log.add(input)
+    return input
+}
 
+fun printlnAndLog(text: String) {
+    log.add(text)
+    println(text)
+}
