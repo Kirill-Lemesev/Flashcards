@@ -83,6 +83,7 @@ fun ask() {
                 printlnAndLog("Correct!")
             }
             in termDefinition.values -> {
+                cardStatistic[randomKey] = (cardStatistic[randomKey] ?: 0) + 1
                 for (key in termDefinition.keys) {
                     if (answer == termDefinition[key]) {
                         printlnAndLog("Wrong. The right answer is \"${termDefinition[randomKey]}\", but your definition is correct for \"$key\"")
@@ -90,6 +91,7 @@ fun ask() {
                 }
             }
             else -> {
+                cardStatistic[randomKey] = (cardStatistic[randomKey] ?: 0) + 1
                 printlnAndLog("Wrong. The right answer is \"${termDefinition[randomKey]}\"")
             }
         }
@@ -101,6 +103,23 @@ fun log() {
     val file = File(readAndLog())
     for (line in log) file.appendText("$line\n")
     println("The log has been saved.")
+}
+
+fun hardestCard() {
+    if (cardStatistic.size == 1) {
+        val term = cardStatistic.keys.first()
+        val value = cardStatistic[term]
+        printlnAndLog("The hardest card is \"$term\". You have $value errors answering it")
+    } else if (cardStatistic.size > 1) {
+        var keys = mutableListOf<String>()
+        for (key in cardStatistic.keys) {
+            keys.add("\"$key\"")
+        }
+        printlnAndLog("The hardest cards are ${keys.joinToString(", ")}")
+
+    } else {
+        printlnAndLog("There are no cards with errors")
+    }
 }
 
 fun readAndLog(): String {

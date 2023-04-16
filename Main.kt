@@ -2,8 +2,9 @@ package flashcards
 
 
 var termDefinition = mutableMapOf<String, String> ()
+var cardStatistic = mutableMapOf<String, Int> ()
 var log = mutableListOf<String>()
-// TODO make your own readln function!!!
+
 fun main() {
 
     while (true) {
@@ -15,10 +16,10 @@ fun main() {
             "export" -> export()
             "ask" -> ask()
             "log" -> log()
-            //"hardest card" -> hardest_card()
+            "hardest card" -> hardestCard()
             //"reset stats" -> reset_stats()
             "exit" -> {
-                println("Bye bye!")
+                printlnAndLog("Bye bye!")
                 break
             }
         }
