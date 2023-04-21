@@ -1,10 +1,5 @@
 package flashcards
 
-
-var termDefinition = mutableMapOf<String, String> ()
-var cardStatistic = mutableMapOf<String, Int> ()
-var log = mutableListOf<String>()
-
 fun main() {
 
     while (true) {
@@ -17,13 +12,11 @@ fun main() {
             "ask" -> ask()
             "log" -> log()
             "hardest card" -> hardestCard()
-            //"reset stats" -> reset_stats()
+            "reset stats" -> resetStats()
             "exit" -> {
                 printlnAndLog("Bye bye!")
                 break
             }
         }
     }
-
-
 }
