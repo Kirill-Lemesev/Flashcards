@@ -1,25 +1,22 @@
 package flashcards
 
-
-var termDefinition = mutableMapOf<String, String> ()
-
-
 fun main() {
 
     while (true) {
-        println("Input the action (add, remove, import, export, ask, exit):")
-        when (readln()) {
+        printlnAndLog("Input the action (add, remove, import, export, ask, log, hardest card, reset stats, exit):")
+        when (readAndLog()) {
             "add" -> add()
             "remove" -> remove()
             "import" -> import()
             "export" -> export()
             "ask" -> ask()
+            "log" -> log()
+            "hardest card" -> hardestCard()
+            "reset stats" -> resetStats()
             "exit" -> {
-                println("Bye bye!")
+                printlnAndLog("Bye bye!")
                 break
             }
         }
     }
-
-
 }
