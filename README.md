@@ -12,6 +12,6 @@
 
 ### CDM options
 
-- -import /pathtofile - program import card before running
+- -import /pathtofile - program import card(s) before running
 - -export /pathtofile - program export card(s) from memory when user choice exit in the main menu
 
