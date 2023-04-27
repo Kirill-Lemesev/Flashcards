@@ -41,10 +41,14 @@ fun remove() {
 }
 
 
-fun import() {
-
-    printlnAndLog("File name:")
-    val file = File(readAndLog())
+fun import(filePath: String? = null) {
+    val file: File
+    if (filePath == null) {
+        printlnAndLog("File name:")
+        file = File(readAndLog())
+    } else {
+        file = File(filePath)
+    }
     if (file.exists()) {
         var counter = 0
         file.forEachLine {
@@ -61,11 +65,15 @@ fun import() {
 }
 
 
-fun export() {
-
-    printlnAndLog("File name:")
-    val file = File(readAndLog())
+fun export(filePath: String? = null) {
+    val file: File
     var counter = 0
+    if (filePath == null) {
+        printlnAndLog("File name:")
+        file = File(readAndLog())
+    } else {
+        file = File(filePath)
+    }
     file.writeText("")
     for ((key, value) in termDefinition) {
         if (key in cardStatistic.keys) {
